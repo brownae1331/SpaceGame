@@ -127,8 +127,11 @@ public class InventoryController : MonoBehaviour
 
     private void CreateRandomItem()
     {
+        if(selectedItem != null) { return; }
+
         int selectedItemID = UnityEngine.Random.Range(0, items.Count);
-        CreateNewInventoryItem(items[selectedItemID]);
+        InventoryItem newItem =  CreateNewInventoryItem(items[selectedItemID]);
+        SelectItem(newItem);
     }
 
     public InventoryItem CreateNewInventoryItem(ItemData itemData)
