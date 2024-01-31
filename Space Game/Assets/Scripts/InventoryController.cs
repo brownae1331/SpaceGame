@@ -82,7 +82,7 @@ public class InventoryController : MonoBehaviour
     private void InsertItem(InventoryItem itemToInsert)
     { 
 
-        Vector2Int? posOnGrid = selectedItemGrid.FindSpaceForObject(itemToInsert);
+        Vector2Int? posOnGrid = selectedItemGrid.FindSpaceForObject(itemToInsert.itemData);
 
         if (posOnGrid == null) { return; }
 
@@ -133,16 +133,22 @@ public class InventoryController : MonoBehaviour
 
     public InventoryItem CreateNewInventoryItem(ItemData itemData)
     {
-        InventoryItem inventoryItem = Instantiate(itemPrefab).GetComponent<InventoryItem>();
+        GameObject newItemGO = Instantiate(itemPrefab);
+
+        InventoryItem newInventoryItem = newItemGO.GetComponent<InventoryItem>();
+
+        RectTransform newItemRectTransform = newItemGO.GetComponent<RectTransform>();
+        newItemRectTransform.SetParent(canvasTransform);
+
+        newInventoryItem.Set(itemData);
+
+        return newInventoryItem;
+    }
+
+    public void SelectItem(InventoryItem inventoryItem)
+    {
         selectedItem = inventoryItem;
-
         rectTransform = inventoryItem.GetComponent<RectTransform>();
-        rectTransform.SetParent(canvasTransform);
-        rectTransform.SetAsLastSibling();
-
-        inventoryItem.Set(itemData);
-
-        return inventoryItem;
     }
 
     private void LeftMouseButtonPress()

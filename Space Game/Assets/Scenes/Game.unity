@@ -10542,6 +10542,7 @@ GameObject:
   - component: {fileID: 722919679}
   - component: {fileID: 722919680}
   - component: {fileID: 722919681}
+  - component: {fileID: 722919682}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -10617,6 +10618,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   orientation: {fileID: 250728218}
+--- !u!114 &722919682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722919678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 523d0394a5b8f8e4187dc8df436eddbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemGrid: {fileID: 2057223614}
+  inventoryController: {fileID: 1570342109}
 --- !u!1 &731868051
 GameObject:
   m_ObjectHideFlags: 0
@@ -35513,7 +35528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mineTime: 3
   itemdata: {fileID: 11400000, guid: 0341c29d6d65d0840a3e2aca0fd5d972, type: 2}
-  inventoryController: {fileID: 1570342109}
+  playerInventory: {fileID: 722919682}
 --- !u!1 &5649381730738337709
 GameObject:
   m_ObjectHideFlags: 0
@@ -35547,7 +35562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mineTime: 3
   itemdata: {fileID: 11400000, guid: 0341c29d6d65d0840a3e2aca0fd5d972, type: 2}
-  inventoryController: {fileID: 1570342109}
+  playerInventory: {fileID: 722919682}
 --- !u!1 &5649381731204422788
 GameObject:
   m_ObjectHideFlags: 0
@@ -35581,7 +35596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mineTime: 3
   itemdata: {fileID: 11400000, guid: 0341c29d6d65d0840a3e2aca0fd5d972, type: 2}
-  inventoryController: {fileID: 1570342109}
+  playerInventory: {fileID: 722919682}
 --- !u!1 &5649381731585431701
 GameObject:
   m_ObjectHideFlags: 0
@@ -35615,7 +35630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mineTime: 3
   itemdata: {fileID: 11400000, guid: 0341c29d6d65d0840a3e2aca0fd5d972, type: 2}
-  inventoryController: {fileID: 1570342109}
+  playerInventory: {fileID: 722919682}
 --- !u!1 &5649381732199297440
 GameObject:
   m_ObjectHideFlags: 0
@@ -35649,7 +35664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mineTime: 3
   itemdata: {fileID: 11400000, guid: 0341c29d6d65d0840a3e2aca0fd5d972, type: 2}
-  inventoryController: {fileID: 1570342109}
+  playerInventory: {fileID: 722919682}
 --- !u!1 &5779280677520054193
 GameObject:
   m_ObjectHideFlags: 0
@@ -35914,7 +35929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mineTime: 3
   itemdata: {fileID: 11400000, guid: 0341c29d6d65d0840a3e2aca0fd5d972, type: 2}
-  inventoryController: {fileID: 1570342109}
+  playerInventory: {fileID: 722919682}
 --- !u!33 &7381217385310096794
 MeshFilter:
   m_ObjectHideFlags: 0

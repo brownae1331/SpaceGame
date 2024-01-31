@@ -6,8 +6,8 @@ public class MineableTarget : MonoBehaviour
 {
     public float mineTime = 5f;
     public ItemData itemdata;
-    
-    public InventoryController inventoryController;
+
+    [SerializeField] PlayerInventory playerInventory;
 
     public void TakeDamage()
     {
@@ -15,7 +15,8 @@ public class MineableTarget : MonoBehaviour
 
         if (mineTime <= 0.0f)
         {
-            inventoryController.InsertItem(itemdata);
+            playerInventory.AddItem(itemdata);
+            //inventoryController.InsertItem(itemdata);
             Destroy(gameObject);
         }
     }
