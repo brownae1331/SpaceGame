@@ -26312,6 +26312,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1b359166bc2a16c4997e29669634bc92, type: 2}
   itemPrefab: {fileID: 1072167763679856217, guid: 9946f9bcd8d1b0243a0568a5931fcab0, type: 3}
   canvasTransform: {fileID: 1493734362}
+  inventoryHighlight: {fileID: 1570342110}
 --- !u!114 &1570342110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35510,7 +35511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc102a19a3b75a84e8c3e20e9a8d46ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mineTime: 5
+  mineTime: 3
   itemdata: {fileID: 11400000, guid: 0341c29d6d65d0840a3e2aca0fd5d972, type: 2}
   inventoryController: {fileID: 1570342109}
 --- !u!1 &5649381730738337709
@@ -35544,7 +35545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc102a19a3b75a84e8c3e20e9a8d46ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mineTime: 5
+  mineTime: 3
   itemdata: {fileID: 11400000, guid: 0341c29d6d65d0840a3e2aca0fd5d972, type: 2}
   inventoryController: {fileID: 1570342109}
 --- !u!1 &5649381731204422788
@@ -35578,7 +35579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc102a19a3b75a84e8c3e20e9a8d46ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mineTime: 5
+  mineTime: 3
   itemdata: {fileID: 11400000, guid: 0341c29d6d65d0840a3e2aca0fd5d972, type: 2}
   inventoryController: {fileID: 1570342109}
 --- !u!1 &5649381731585431701
@@ -35612,7 +35613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc102a19a3b75a84e8c3e20e9a8d46ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mineTime: 5
+  mineTime: 3
   itemdata: {fileID: 11400000, guid: 0341c29d6d65d0840a3e2aca0fd5d972, type: 2}
   inventoryController: {fileID: 1570342109}
 --- !u!1 &5649381732199297440
@@ -35646,7 +35647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc102a19a3b75a84e8c3e20e9a8d46ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mineTime: 5
+  mineTime: 3
   itemdata: {fileID: 11400000, guid: 0341c29d6d65d0840a3e2aca0fd5d972, type: 2}
   inventoryController: {fileID: 1570342109}
 --- !u!1 &5779280677520054193
@@ -35911,7 +35912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc102a19a3b75a84e8c3e20e9a8d46ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mineTime: 5
+  mineTime: 3
   itemdata: {fileID: 11400000, guid: 0341c29d6d65d0840a3e2aca0fd5d972, type: 2}
   inventoryController: {fileID: 1570342109}
 --- !u!33 &7381217385310096794

@@ -15,8 +15,8 @@ public class MineableTarget : MonoBehaviour
 
         if (mineTime <= 0.0f)
         {
-            Destroy(gameObject);
             inventoryController.InsertItem(itemdata);
+            Destroy(gameObject);
         }
     }
 }

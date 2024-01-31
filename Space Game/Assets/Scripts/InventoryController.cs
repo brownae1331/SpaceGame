@@ -26,12 +26,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Transform canvasTransform;
 
-    InventoryHighlight inventoryHighlight;
-
-    private void Awake()
-    {
-        inventoryHighlight = GetComponent<InventoryHighlight>();
-    }
+    [SerializeField] InventoryHighlight inventoryHighlight;
 
     private void Update()
     {
@@ -87,7 +82,7 @@ public class InventoryController : MonoBehaviour
     private void InsertItem(InventoryItem itemToInsert)
     { 
 
-        Vector2Int? posOnGrid = selectedItemGrid.FindSpaceForObject(itemToInsert.itemData);
+        Vector2Int? posOnGrid = selectedItemGrid.FindSpaceForObject(itemToInsert);
 
         if (posOnGrid == null) { return; }
 

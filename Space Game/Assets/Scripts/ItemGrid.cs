@@ -1,4 +1,4 @@
-using JetBrains.Annotations;
+ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,11 +18,20 @@ public class ItemGrid : MonoBehaviour
     [SerializeField] int gridSizeWidth = 20;
     [SerializeField] int gridSizeHeight = 10;
 
-    public void Init()
+    private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        inventoryItemSlot = new InventoryItem[gridSizeWidth, gridSizeHeight];
-        Vector2 size = new Vector2(gridSizeWidth * tileSizeWidth, gridSizeHeight * tileSizeHeight);
+    }
+
+    private void Start()
+    {
+        Init(gridSizeWidth, gridSizeHeight);
+    }
+
+    public void Init(int width, int height)
+    {
+        inventoryItemSlot = new InventoryItem[width, height];
+        Vector2 size = new Vector2(width * tileSizeWidth, height * tileSizeHeight);
         rectTransform.sizeDelta = size;
     }
             
@@ -164,16 +173,16 @@ public class ItemGrid : MonoBehaviour
         return inventoryItemSlot[x, y];
     }
 
-    public Vector2Int? FindSpaceForObject(ItemData itemData)
+    public Vector2Int? FindSpaceForObject(InventoryItem itemToInsert)
     {
-        int height = gridSizeHeight - itemData.height + 1;
-        int width = gridSizeWidth - itemData.width + 1;
+        int height = gridSizeHeight - itemToInsert.itemData.height + 1;
+        int width = gridSizeWidth - itemToInsert.itemData.width + 1;
 
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
             {
-                if (CheckAvailableSpace(x, y, itemData.width, itemData.height) == true)
+                if (CheckAvailableSpace(x, y, itemToInsert.itemData.width, itemToInsert.itemData.height) == true)
                 {
                     return new Vector2Int(x, y);
                 }
