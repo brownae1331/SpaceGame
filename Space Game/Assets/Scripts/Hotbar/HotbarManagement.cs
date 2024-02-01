@@ -7,8 +7,8 @@ using UnityEngine;
 public class HotbarManagement : MonoBehaviour
 {
     private int selectedItemSlot = 0;
-    public Vector2 currentSlotLocation;
-    public Vector2 previousSlotLocation;
+    private Vector2 currentSlotLocation;
+    private Vector2? previousSlotLocation;
 
     private int slotWidth = 96;
     private int slotHeight = 96;
