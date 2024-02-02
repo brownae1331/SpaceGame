@@ -38,6 +38,11 @@ public class HotbarManagement : MonoBehaviour
         previousSlotLocation = currentSlotLocation;
     }
 
+    private void AddItemToSlot(ItemData itemData)
+    {
+
+    }
+
     private void ChangeSelectedSlot()
     {
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
