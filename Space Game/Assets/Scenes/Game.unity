@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16100,8 +16100,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1517262503}
-  - component: {fileID: 1517262504}
   - component: {fileID: 1517262505}
+  - component: {fileID: 1517262504}
+  - component: {fileID: 1517262506}
   m_Layer: 0
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -16135,7 +16136,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517262502}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dc93a81cf7560a4e8f497fc3a8de1f3, type: 3}
   m_Name: 
@@ -16162,6 +16163,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1517262506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517262502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bef3410a75e9e674a90d0eb902bd6da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hotbarManagement: {fileID: 1748343822}
 --- !u!1 &1551288077
 GameObject:
   m_ObjectHideFlags: 0
@@ -17605,6 +17619,10 @@ PrefabInstance:
     - target: {fileID: 1953377248963241237, guid: 4eac8d3f48d4bd24f941f6e166967f4b, type: 3}
       propertyPath: m_Name
       value: Rifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953377248963241237, guid: 4eac8d3f48d4bd24f941f6e166967f4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5708431488197957838, guid: 4eac8d3f48d4bd24f941f6e166967f4b, type: 3}
       propertyPath: fpsCam
@@ -19077,7 +19095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505609617251186380, guid: 70ecf7c7d4a97a34d86f7a99f8cf6c5c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7943921262863156241, guid: 70ecf7c7d4a97a34d86f7a99f8cf6c5c, type: 3}
       propertyPath: fpsCam
@@ -19195,6 +19213,10 @@ PrefabInstance:
     - target: {fileID: 4316007970498200345, guid: a9146df8602364d4ab2c9915c97faca0, type: 3}
       propertyPath: m_Name
       value: Heavy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4316007970498200345, guid: a9146df8602364d4ab2c9915c97faca0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7095669648015991470, guid: a9146df8602364d4ab2c9915c97faca0, type: 3}
       propertyPath: fpsCam
@@ -19398,6 +19420,10 @@ PrefabInstance:
     - target: {fileID: 8766904173374801840, guid: d34317e78c5a58a4195c88886693cb99, type: 3}
       propertyPath: m_Name
       value: MiningGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 8766904173374801840, guid: d34317e78c5a58a4195c88886693cb99, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

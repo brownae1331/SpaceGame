@@ -7,7 +7,9 @@ using UnityEngine.UI;
 
 public class HotbarManagement : MonoBehaviour
 {
+    private int previousItemSlot = 10;
     private int selectedItemSlot = 0;
+
     private Vector2 currentSlotLocation;
     private Vector2? previousSlotLocation;
 
@@ -29,13 +31,24 @@ public class HotbarManagement : MonoBehaviour
         AddItemToSlot(items[1], 1);
         AddItemToSlot(items[2], 2);
         AddItemToSlot(items[3], 3);
+        DisplaySlotItem(items[0]);
+        previousItemSlot = 0;
 
     }
 
-        private void Update()
+    private void Update()
     {
         HighlightSlot();
         ChangeSelectedSlot();
+        DisplaySlotItem(items[selectedItemSlot]);
+    }
+    
+    private void DisplaySlotItem(ItemData itemData)
+    {
+        if (selectedItemSlot != previousItemSlot)
+        {
+            Instantiate(itemData.itemPrefab);
+        }
     }
 
     private void HighlightSlot()
@@ -72,6 +85,7 @@ public class HotbarManagement : MonoBehaviour
     {
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
+            previousItemSlot = selectedItemSlot;
             if (selectedItemSlot >= 8)
             {
                 selectedItemSlot = 0;
@@ -85,6 +99,7 @@ public class HotbarManagement : MonoBehaviour
 
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
+            previousItemSlot = selectedItemSlot;
             if (selectedItemSlot <= 0)
             {
                 selectedItemSlot = 8;
@@ -95,50 +110,62 @@ public class HotbarManagement : MonoBehaviour
                 selectedItemSlot--;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+    
+        if (Input.anyKey)
         {
-            selectedItemSlot = 0;
-        }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                previousItemSlot = selectedItemSlot;
+                selectedItemSlot = 0;
+            }
 
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            selectedItemSlot = 1;
-        }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                previousItemSlot = selectedItemSlot;
+                selectedItemSlot = 1;
+            }
 
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            selectedItemSlot = 2;
-        }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                previousItemSlot = selectedItemSlot;
+                selectedItemSlot = 2;
+            }
 
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            selectedItemSlot = 3;
-        }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                previousItemSlot = selectedItemSlot;
+                selectedItemSlot = 3;
+            }
 
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            selectedItemSlot = 4;
-        }
+            else if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                previousItemSlot = selectedItemSlot;
+                selectedItemSlot = 4;
+            }
 
-        else if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            selectedItemSlot = 5;
-        }
+            else if (Input.GetKeyDown(KeyCode.Alpha6))
+            {
+                previousItemSlot = selectedItemSlot;
+                selectedItemSlot = 5;
+            }
 
-        else if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            selectedItemSlot = 6;
-        }
+            else if (Input.GetKeyDown(KeyCode.Alpha7))
+            {
+                previousItemSlot = selectedItemSlot;
+                selectedItemSlot = 6;
+            }
 
-        else if (Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            selectedItemSlot = 7;
-        }
+            else if (Input.GetKeyDown(KeyCode.Alpha8))
+            {
+                previousItemSlot = selectedItemSlot;
+                selectedItemSlot = 7;
+            }
 
-        else if (Input.GetKeyDown(KeyCode.Alpha9))
-        {
-            selectedItemSlot = 8;
+            else if (Input.GetKeyDown(KeyCode.Alpha9))
+            {
+                previousItemSlot = selectedItemSlot;
+                selectedItemSlot = 8;
+            }
         }
     }
 }
