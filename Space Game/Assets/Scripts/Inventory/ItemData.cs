@@ -11,7 +11,6 @@ public class ItemData : ScriptableObject
 
     public Sprite itemIcon;
     public GameObject itemPrefab;
-    
-    public int posX;
-    public int posY;
+
+    public Vector3 itemPos;
 }

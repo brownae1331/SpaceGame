@@ -23,6 +23,7 @@ public class HotbarManagement : MonoBehaviour
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Transform hotbarTransform;
     [SerializeField] List<ItemData> items;
+    [SerializeField] Transform weaponHolderTransform;
 
     private void Start()
     {
@@ -47,7 +48,12 @@ public class HotbarManagement : MonoBehaviour
     {
         if (selectedItemSlot != previousItemSlot)
         {
-            Instantiate(itemData.itemPrefab);
+            GameObject itemToDisplay = Instantiate(itemData.itemPrefab);
+
+            Transform itemTransform = itemToDisplay.GetComponent<Transform>();
+            itemTransform.SetParent(weaponHolderTransform);
+
+            itemTransform.localPosition = itemData.itemPos;
         }
     }
 
