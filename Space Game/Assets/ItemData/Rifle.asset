@@ -17,3 +17,4 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 2579293946372a947b21575b75de1a4e, type: 3}
   itemPrefab: {fileID: 1953377248963241237, guid: 4eac8d3f48d4bd24f941f6e166967f4b, type: 3}
   itemPos: {x: 0.22601318, y: -0.15499997, z: 0.42300415}
+  itemType: Gun

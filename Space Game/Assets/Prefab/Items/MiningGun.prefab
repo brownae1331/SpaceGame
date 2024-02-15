@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lazerOrigin: {fileID: 5005737451488531473}
-  fpsCam: {fileID: 290503593717674985, guid: a0bd814e4b5a78541a27001ab9eeea43, type: 3}
+  fpsCam: {fileID: 0}
   maxRange: 100
   damage: 5
 --- !u!120 &6802030799196962473
