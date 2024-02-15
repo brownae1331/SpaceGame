@@ -13,6 +13,7 @@ public class ItemData : ScriptableObject
     public GameObject itemPrefab;
 
     public Vector3 itemPos;
+    public Vector3 itemRotation;
 
     public string itemType;
 }

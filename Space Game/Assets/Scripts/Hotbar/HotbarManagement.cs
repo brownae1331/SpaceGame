@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class HotbarManagement : MonoBehaviour
 {
-    private int previousItemSlot = 10;
-    private int selectedItemSlot = 0;
+    private int previousItemSlot;
+    private int selectedItemSlot;
 
     private Vector2 currentSlotLocation;
     private Vector2? previousSlotLocation;
@@ -31,7 +31,6 @@ public class HotbarManagement : MonoBehaviour
         AddItemToSlot(items[1], 1);
         AddItemToSlot(items[2], 2);
         AddItemToSlot(items[3], 3);
-        previousItemSlot = 0;
 
     }
 
@@ -41,9 +40,22 @@ public class HotbarManagement : MonoBehaviour
         ChangeSelectedSlot();
     }
 
-    public ItemData getSelectedIten()
+    public ItemData GetSelectedIten()
     {
         return items[selectedItemSlot];
+    }
+
+    public bool SelectedItemChanged()
+    {
+        if (selectedItemSlot == previousItemSlot)
+        {
+            return false;
+        }
+        else
+        {
+            previousItemSlot = selectedItemSlot;
+            return true;
+        }
     }
 
     private void HighlightSlot()
