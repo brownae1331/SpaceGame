@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryPanel: {fileID: 8382428115367127287}
   statsPanel: {fileID: 1065150128670328241}
+  pauseManager: {fileID: 1475430026}
 --- !u!4 &1475430025
 Transform:
   m_ObjectHideFlags: 0
@@ -245,20 +246,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475430023}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9c9d4cffa0b9394a829aa3c35bb7f95, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cfe15cb387bb75429af842ccbacdd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objects:
-  - {fileID: 7003735681162121306, guid: a19d6850c258adc4398f625d3e1a90ca, type: 3}
-  - {fileID: 2949096715131206985}
-  - {fileID: 3540299097253174859}
-  - {fileID: 5390066713481234351}
-  - {fileID: 1142548391660908026}
-  - {fileID: 7002387238893607301}
-  - {fileID: 1446029543210395053}
-  - {fileID: 3998530928460012852}
+  isPaused: 0
 --- !u!33 &10405322772503453
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2274,8 +2267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995e61b919e461a43aa708a59267d409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSizeWidth: 10
-  gridSizeHeight: 10
+  gridSizeWidth: 15
+  gridSizeHeight: 15
 --- !u!114 &3736520812824762346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7302,19 +7295,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 520125348792021635}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4086838060114056370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4856143113513981284}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc93a81cf7560a4e8f497fc3a8de1f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedWeapon: 0
 --- !u!205 &4101654395249444001
 LODGroup:
   m_ObjectHideFlags: 0
@@ -7354,6 +7334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77e7d96146bc544a89830e6e45a485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseManager: {fileID: 1475430026}
   hotbarHighlight: {fileID: 9068498517126717376}
   itemPrefab: {fileID: 1072167763679856217, guid: 9946f9bcd8d1b0243a0568a5931fcab0, type: 3}
   hotbarTransform: {fileID: 5131393861842235399}
@@ -7729,7 +7710,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3399211870664019511}
   - component: {fileID: 7646630900049878381}
-  - component: {fileID: 4086838060114056370}
   - component: {fileID: 6498928381663371205}
   m_Layer: 0
   m_Name: WeaponHolder

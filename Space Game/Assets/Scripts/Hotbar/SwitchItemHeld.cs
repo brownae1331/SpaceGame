@@ -8,6 +8,7 @@ public class SwitchItemHeld : MonoBehaviour
     private ItemData itemData;
     private GameObject itemToDisplay;
 
+    [SerializeField] PauseManager pauseManager;
     [SerializeField] HotbarManagement hotbarManagement;
     [SerializeField] new Camera camera;
     [SerializeField] Transform weaponHolderTransform;
@@ -47,6 +48,7 @@ public class SwitchItemHeld : MonoBehaviour
         {
             LazerGun lazerGunScript = itemToDisplay.GetComponent<LazerGun>();
             lazerGunScript.fpsCam = camera;
+            lazerGunScript.pauseManager = pauseManager;
         }
 
         else if (itemData.itemType == "Gun")
@@ -56,6 +58,7 @@ public class SwitchItemHeld : MonoBehaviour
             gunScrpit.impactEffect = impactEffect;
             gunScrpit.animator = animator;
             gunScrpit.SetAnimator();
+            gunScrpit.pauseManager = pauseManager;
         }
     }
 }

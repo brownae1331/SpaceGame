@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour
     public Camera fpsCam;
     public ParticleSystem muzzzleFlash;
     public GameObject impactEffect;
+    public PauseManager pauseManager;
 
     private float nextTimeToFire = 0f;
 
@@ -35,21 +36,24 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if (isReloading)
+        if (!pauseManager.isPaused)
         {
-            return;
-        }
+            if (isReloading)
+            {
+                return;
+            }
 
-        if ((currentAmmo <= 0 || Input.GetKeyDown("r")) && currentAmmo != maxAmmo)
-        {
-            StartCoroutine(Reload());
-            return;
-        }
+            if ((currentAmmo <= 0 || Input.GetKeyDown("r")) && currentAmmo != maxAmmo)
+            {
+                StartCoroutine(Reload());
+                return;
+            }
 
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
-        {
-            nextTimeToFire = Time.time + 1f/fireRate;
-            Shoot();
+            if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
+            {
+                nextTimeToFire = Time.time + 1f / fireRate;
+                Shoot();
+            }
         }
     }
 

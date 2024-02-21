@@ -6,6 +6,7 @@ public class UIPanelManager : MonoBehaviour
 {
     [SerializeField] GameObject inventoryPanel;
     [SerializeField] GameObject statsPanel;
+    [SerializeField] PauseManager pauseManager;
 
     private void Update()
     {
@@ -13,6 +14,16 @@ public class UIPanelManager : MonoBehaviour
         {
             OpenInventory();
             OpenStats();
+
+            if (pauseManager.isPaused)
+            {
+                pauseManager.ResumeGame();
+            }
+
+            else
+            {
+                pauseManager.PauseGame();
+            }
         }
 
         if (inventoryPanel.activeInHierarchy || statsPanel.activeInHierarchy)

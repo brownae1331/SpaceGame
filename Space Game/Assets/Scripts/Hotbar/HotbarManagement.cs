@@ -19,6 +19,7 @@ public class HotbarManagement : MonoBehaviour
     private int itemWidth = 32;
     private int itemHeight = 32;
 
+    [SerializeField] PauseManager pauseManager;
     [SerializeField] HotbarHighlight hotbarHighlight;
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Transform hotbarTransform;
@@ -36,8 +37,11 @@ public class HotbarManagement : MonoBehaviour
 
     private void Update()
     {
-        HighlightSlot();
-        ChangeSelectedSlot();
+        if (!pauseManager.isPaused)
+        {
+            HighlightSlot();
+            ChangeSelectedSlot();
+        }
     }
 
     public ItemData GetSelectedIten()

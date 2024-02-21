@@ -8,6 +8,7 @@ public class LazerGun : MonoBehaviour
     private LineRenderer lazer;
     public Transform lazerOrigin;
     public Camera fpsCam;
+    public PauseManager pauseManager;
 
     public float maxRange = 100f;
     public float damage = 1f;
@@ -20,10 +21,13 @@ public class LazerGun : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (!pauseManager.isPaused)
         {
-            StopCoroutine("Shoot");
-            StartCoroutine("Shoot");
+            if (Input.GetButtonDown("Fire1"))
+            {
+                StopCoroutine("Shoot");
+                StartCoroutine("Shoot");
+            }
         }
     }
 
