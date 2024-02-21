@@ -54,10 +54,8 @@ public class SwitchItemHeld : MonoBehaviour
             Gun gunScrpit = itemToDisplay.GetComponent<Gun>(); 
             gunScrpit.fpsCam = camera;
             gunScrpit.impactEffect = impactEffect;
-            if (animator != null)
-            {
-                gunScrpit.animator = animator;
-            }
+            gunScrpit.animator = animator;
+            gunScrpit.SetAnimator();
         }
     }
 }

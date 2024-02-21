@@ -174,5 +174,10 @@ public class HotbarManagement : MonoBehaviour
                 selectedItemSlot = 8;
             }
         }
+
+        if (selectedItemSlot >= items.Count)
+        {
+            selectedItemSlot = previousItemSlot;
+        }
     }
 }

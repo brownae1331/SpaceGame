@@ -5625,4 +5625,4 @@ MonoBehaviour:
   fpsCam: {fileID: 290503593717674985, guid: a0bd814e4b5a78541a27001ab9eeea43, type: 3}
   muzzzleFlash: {fileID: 3543872044368556019}
   impactEffect: {fileID: 2525238652754884988, guid: 36f6cd8163d15c44dad4d90c4bd5a0bb, type: 3}
-  animator: {fileID: 6842044991545531530, guid: 044898bf91162e44b94d9dcce23402b3, type: 3}
+  animator: {fileID: 5252214756082480729, guid: 2ed9fabf030f1fd4abe353a5c01a6ae1, type: 3}

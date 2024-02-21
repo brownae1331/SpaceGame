@@ -27,7 +27,7 @@ public class Gun : MonoBehaviour
         currentAmmo = maxAmmo;
     }
 
-    void OnEnable() 
+    public void SetAnimator() 
     {
         isReloading = false;
         animator.SetBool("Reloading", false);
