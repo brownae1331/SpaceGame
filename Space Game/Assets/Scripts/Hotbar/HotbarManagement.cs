@@ -7,11 +7,10 @@ using UnityEngine.UI;
 
 public class HotbarManagement : MonoBehaviour
 {
-    private int previousItemSlot;
     private int selectedItemSlot;
+    private int? previousItemSlot;
 
     private Vector2 currentSlotLocation;
-    private Vector2? previousSlotLocation;
 
     private int slotWidth = 96;
     private int slotHeight = 96;
@@ -24,16 +23,7 @@ public class HotbarManagement : MonoBehaviour
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Transform hotbarTransform;
     [SerializeField] List<ItemData> hotbarItems;
-
-    private void Start()
-    {
-        HighlightSlot();
-        AddItemToSlot(hotbarItems[0], 0);
-        AddItemToSlot(hotbarItems[1], 1);
-        AddItemToSlot(hotbarItems[2], 2);
-        AddItemToSlot(hotbarItems[3], 3);
-
-    }
+    [SerializeField] List<GameObject> hotbarItemIcons;
 
     private void Update()
     {
@@ -64,14 +54,11 @@ public class HotbarManagement : MonoBehaviour
 
     private void HighlightSlot()
     {
-        currentSlotLocation = new Vector2 (selectedItemSlot * 32, 0);
-
-        if (currentSlotLocation == previousSlotLocation) { return; }
+        currentSlotLocation = new Vector2(selectedItemSlot * 32, 0);
 
         hotbarHighlight.Show(true);
         hotbarHighlight.SetSize(slotWidth, slotHeight);
         hotbarHighlight.SetPosition(currentSlotLocation);
-        previousSlotLocation = currentSlotLocation;
     }
 
     private void AddItemToSlot(ItemData itemData, int itemSlot)
@@ -90,13 +77,20 @@ public class HotbarManagement : MonoBehaviour
         pos.x = itemSlot * itemWidth + itemWidth / 2;
         pos.y = -(itemSlot + itemHeight / 2);
         itemRect.localPosition = pos;
+
+        hotbarItems[itemSlot] = itemData;
+        hotbarItemIcons[itemSlot] = newItem;
     }
 
     public void DragItemToSlot(ItemData itemData)
-    {
+    { 
         int slotToAdd = CalcualteMouseOnSlot(Input.mousePosition.x, Input.mousePosition.y);
+        if (hotbarItems[slotToAdd] != null)
+        {
+            Destroy(hotbarItemIcons[slotToAdd]);
+        }
+
         AddItemToSlot(itemData, slotToAdd);
-        Debug.Log("siguer");
     }
 
     public bool CheckIfMouseOnHotbar(float posX, float posY)

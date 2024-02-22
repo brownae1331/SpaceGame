@@ -159,7 +159,7 @@ public class InventoryController : MonoBehaviour
 
     private void LeftMouseButtonPress()
     {
-        if (selectedItem == null)
+        if (selectedItem == null && selectedItemGrid != null)
         {
             Vector2Int tileGridPosition = GetTileGridPosition();
             PickUpItem(tileGridPosition);
@@ -168,9 +168,12 @@ public class InventoryController : MonoBehaviour
         {
             if (hotbarManagement.CheckIfMouseOnHotbar(Input.mousePosition.x, Input.mousePosition.y))
             {
-                hotbarManagement.DragItemToSlot(selectedItem.itemData);
+                if (selectedItem != null)
+                {
+                    hotbarManagement.DragItemToSlot(selectedItem.itemData);
+                }
             }
-            else
+            else if (selectedItemGrid != null)
             {
                 Vector2Int tileGridPosition = GetTileGridPosition();
                 PlaceItem(tileGridPosition);

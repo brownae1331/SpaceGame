@@ -7339,10 +7339,20 @@ MonoBehaviour:
   itemPrefab: {fileID: 1072167763679856217, guid: 9946f9bcd8d1b0243a0568a5931fcab0, type: 3}
   hotbarTransform: {fileID: 5131393861842235399}
   hotbarItems:
-  - {fileID: 11400000, guid: 1b359166bc2a16c4997e29669634bc92, type: 2}
-  - {fileID: 11400000, guid: cc16143054c6d2d449c47bd90e27a434, type: 2}
-  - {fileID: 11400000, guid: 6da9b62a5c394ca4fab65138faf54dfa, type: 2}
-  - {fileID: 11400000, guid: ad4bcac7b85d0434a9f941d260fca4d5, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  hotbarItemIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
