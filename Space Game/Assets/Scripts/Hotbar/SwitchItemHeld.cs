@@ -33,6 +33,8 @@ public class SwitchItemHeld : MonoBehaviour
 
     private void DisplaySlotItem()
     {
+        if (itemData == null) { return; }
+
         itemToDisplay = Instantiate(itemData.itemPrefab);
 
         Transform itemTransform = itemToDisplay.GetComponent<Transform>();

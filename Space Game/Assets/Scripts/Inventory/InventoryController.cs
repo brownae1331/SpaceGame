@@ -27,6 +27,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField] Transform canvasTransform;
 
     [SerializeField] InventoryHighlight inventoryHighlight;
+    [SerializeField] HotbarManagement hotbarManagement;
 
     private void Update()
     {
@@ -51,10 +52,12 @@ public class InventoryController : MonoBehaviour
         if (selectedItemGrid == null)
         {
             inventoryHighlight.Show(false);
-            return;
         }
 
-        HandleHighlight();
+        else
+        {
+            HandleHighlight();
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -156,15 +159,22 @@ public class InventoryController : MonoBehaviour
 
     private void LeftMouseButtonPress()
     {
-        Vector2Int tileGridPosition = GetTileGridPosition();
-
         if (selectedItem == null)
         {
+            Vector2Int tileGridPosition = GetTileGridPosition();
             PickUpItem(tileGridPosition);
         }
         else
         {
-            PlaceItem(tileGridPosition);
+            if (hotbarManagement.CheckIfMouseOnHotbar(Input.mousePosition.x, Input.mousePosition.y))
+            {
+                hotbarManagement.DragItemToSlot(selectedItem.itemData);
+            }
+            else
+            {
+                Vector2Int tileGridPosition = GetTileGridPosition();
+                PlaceItem(tileGridPosition);
+            }
         }
     }
 

@@ -23,15 +23,15 @@ public class HotbarManagement : MonoBehaviour
     [SerializeField] HotbarHighlight hotbarHighlight;
     [SerializeField] GameObject itemPrefab;
     [SerializeField] Transform hotbarTransform;
-    [SerializeField] List<ItemData> items;
+    [SerializeField] List<ItemData> hotbarItems;
 
     private void Start()
     {
         HighlightSlot();
-        AddItemToSlot(items[0], 0);
-        AddItemToSlot(items[1], 1);
-        AddItemToSlot(items[2], 2);
-        AddItemToSlot(items[3], 3);
+        AddItemToSlot(hotbarItems[0], 0);
+        AddItemToSlot(hotbarItems[1], 1);
+        AddItemToSlot(hotbarItems[2], 2);
+        AddItemToSlot(hotbarItems[3], 3);
 
     }
 
@@ -46,7 +46,7 @@ public class HotbarManagement : MonoBehaviour
 
     public ItemData GetSelectedIten()
     {
-        return items[selectedItemSlot];
+        return hotbarItems[selectedItemSlot];
     }
 
     public bool SelectedItemChanged()
@@ -90,6 +90,34 @@ public class HotbarManagement : MonoBehaviour
         pos.x = itemSlot * itemWidth + itemWidth / 2;
         pos.y = -(itemSlot + itemHeight / 2);
         itemRect.localPosition = pos;
+    }
+
+    public void DragItemToSlot(ItemData itemData)
+    {
+        int slotToAdd = CalcualteMouseOnSlot(Input.mousePosition.x, Input.mousePosition.y);
+        AddItemToSlot(itemData, slotToAdd);
+        Debug.Log("siguer");
+    }
+
+    public bool CheckIfMouseOnHotbar(float posX, float posY)
+    {
+        Vector2 pos = new Vector2();
+        pos.x = posX - hotbarTransform.position.x;
+        pos.y = hotbarTransform.position.y - posY;
+        if (pos.y >= 0 && pos.y <= slotHeight && pos.x >= 0 && pos.x <= slotWidth * 9)
+        {
+            return true; 
+        }
+        return false;
+    }
+
+    private int CalcualteMouseOnSlot(float posX, float posY)
+    {
+        Vector2 position = new Vector2();
+        position.x = posX - hotbarTransform.position.x;
+        position.y = hotbarTransform.position.y - posY;
+        int selectedSlot = Mathf.FloorToInt(position.x / slotWidth);
+        return selectedSlot;
     }
 
     private void ChangeSelectedSlot()
@@ -177,11 +205,6 @@ public class HotbarManagement : MonoBehaviour
                 previousItemSlot = selectedItemSlot;
                 selectedItemSlot = 8;
             }
-        }
-
-        if (selectedItemSlot >= items.Count)
-        {
-            selectedItemSlot = previousItemSlot;
         }
     }
 }
