@@ -15,8 +15,8 @@ public class HotbarManagement : MonoBehaviour
     private int slotWidth = 96;
     private int slotHeight = 96;
 
-    private int itemWidth = 32;
-    private int itemHeight = 32;
+    private int itemWidth = 64;
+    private int itemHeight = 64;
 
     [SerializeField] PauseManager pauseManager;
     [SerializeField] HotbarHighlight hotbarHighlight;
@@ -31,6 +31,25 @@ public class HotbarManagement : MonoBehaviour
         {
             HighlightSlot();
             ChangeSelectedSlot();
+        }
+
+        else
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                RemoveItemIcon();
+            }
+        }
+    }
+     
+    private void RemoveItemIcon()
+    {
+        if (CheckIfMouseOnHotbar(Input.mousePosition.x, Input.mousePosition.y))
+        {
+            int itemSlot = CalcualteMouseOnSlot(Input.mousePosition.x, Input.mousePosition.y);
+            hotbarItems[itemSlot] = null;
+            Destroy(hotbarItemIcons[itemSlot]);
+            hotbarItemIcons[itemSlot] = null;
         }
     }
 
@@ -54,10 +73,9 @@ public class HotbarManagement : MonoBehaviour
 
     private void HighlightSlot()
     {
-        currentSlotLocation = new Vector2(selectedItemSlot * 32, 0);
+        currentSlotLocation = new Vector2(selectedItemSlot * 64, 0);
 
         hotbarHighlight.Show(true);
-        hotbarHighlight.SetSize(slotWidth, slotHeight);
         hotbarHighlight.SetPosition(currentSlotLocation);
     }
 

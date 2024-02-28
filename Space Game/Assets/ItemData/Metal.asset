@@ -19,3 +19,4 @@ MonoBehaviour:
   itemPos: {x: 0.633, y: -0.332, z: 0.82}
   itemRotation: {x: 0, y: 0, z: 0}
   itemType: Object
+  stackLimit: 10

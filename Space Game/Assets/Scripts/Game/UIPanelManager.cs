@@ -5,7 +5,6 @@ using UnityEngine;
 public class UIPanelManager : MonoBehaviour
 {
     [SerializeField] GameObject inventoryPanel;
-    [SerializeField] GameObject statsPanel;
     [SerializeField] PauseManager pauseManager;
 
     private void Update()
@@ -13,7 +12,6 @@ public class UIPanelManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             OpenInventory();
-            OpenStats();
 
             if (pauseManager.isPaused)
             {
@@ -26,7 +24,7 @@ public class UIPanelManager : MonoBehaviour
             }
         }
 
-        if (inventoryPanel.activeInHierarchy || statsPanel.activeInHierarchy)
+        if (inventoryPanel.activeInHierarchy)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -42,10 +40,5 @@ public class UIPanelManager : MonoBehaviour
     public void OpenInventory()
     {
         inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
-    }
-
-    public void OpenStats()
-    {
-        statsPanel.SetActive(!statsPanel.activeInHierarchy);
     }
 }

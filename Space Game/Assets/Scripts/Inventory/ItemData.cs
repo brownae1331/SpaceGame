@@ -16,4 +16,6 @@ public class ItemData : ScriptableObject
     public Vector3 itemRotation;
 
     public string itemType;
+
+    public int stackLimit;
 }

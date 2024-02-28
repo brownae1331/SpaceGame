@@ -17,4 +17,6 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 6a2af4fc062d1614182d01f077122e4d, type: 3}
   itemPrefab: {fileID: 7505609617251186380, guid: 70ecf7c7d4a97a34d86f7a99f8cf6c5c, type: 3}
   itemPos: {x: 0.22000122, y: -0.22500002, z: 0.36898804}
+  itemRotation: {x: 0, y: 0, z: 0}
   itemType: Gun
+  stackLimit: 1
