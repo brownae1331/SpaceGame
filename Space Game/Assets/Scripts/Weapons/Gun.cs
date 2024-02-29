@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+
 
 public class Gun : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class Gun : MonoBehaviour
     public float fireRate = 15f;
     public float impactForce = 30f;
 
-    public int maxAmmo = 10;
+    public int maxAmmo = 30;
     private int currentAmmo;
     public float reloadTime = 1f;
     private bool isReloading = false;
@@ -23,9 +25,20 @@ public class Gun : MonoBehaviour
 
     public Animator animator;
 
+    public TextMeshProUGUI ammoText;
+
     void Start()
     {
         currentAmmo = maxAmmo;
+        ammoText.gameObject.SetActive(true);
+    }
+
+    void UpdateAmmoText()
+    {
+        if (ammoText != null)
+        {
+            ammoText.text = currentAmmo.ToString();
+        }
     }
 
     public void SetAnimator() 
@@ -33,7 +46,7 @@ public class Gun : MonoBehaviour
         isReloading = false;
         animator.SetBool("Reloading", false);
     }
-
+     
     void Update()
     {
         if (!pauseManager.isPaused)
@@ -62,6 +75,7 @@ public class Gun : MonoBehaviour
         muzzzleFlash.Play();
 
         currentAmmo--;
+        UpdateAmmoText();
 
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
@@ -96,5 +110,6 @@ public class Gun : MonoBehaviour
 
         currentAmmo = maxAmmo;
         isReloading = false;
+        UpdateAmmoText();
     }
 }

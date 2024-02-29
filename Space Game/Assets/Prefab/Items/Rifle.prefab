@@ -222,12 +222,14 @@ MonoBehaviour:
   range: 100
   fireRate: 8
   impactForce: 30
-  maxAmmo: 10
+  maxAmmo: 30
   reloadTime: 1
   fpsCam: {fileID: 290503593717674985, guid: a0bd814e4b5a78541a27001ab9eeea43, type: 3}
   muzzzleFlash: {fileID: 6739466071799401617}
   impactEffect: {fileID: 2525238652754884988, guid: 36f6cd8163d15c44dad4d90c4bd5a0bb, type: 3}
+  pauseManager: {fileID: 0}
   animator: {fileID: 6842044991545531530, guid: 044898bf91162e44b94d9dcce23402b3, type: 3}
+  ammoText: {fileID: 0}
 --- !u!1 &2383251797982146942
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -7,8 +8,8 @@ using UnityEngine.UI;
 
 public class HotbarManagement : MonoBehaviour
 {
-    private int selectedItemSlot;
-    private int? previousItemSlot;
+    public int selectedItemSlot = -1;
+    public int previousItemSlot = -1;
 
     private Vector2 currentSlotLocation;
 
@@ -24,6 +25,10 @@ public class HotbarManagement : MonoBehaviour
     [SerializeField] Transform hotbarTransform;
     [SerializeField] List<ItemData> hotbarItems;
     [SerializeField] List<GameObject> hotbarItemIcons;
+
+    public bool selectedItemChanged = false;
+    public bool deleteInspectorItem = false;
+    public int deletedItemObject;
 
     private void Update()
     {
@@ -50,29 +55,25 @@ public class HotbarManagement : MonoBehaviour
             hotbarItems[itemSlot] = null;
             Destroy(hotbarItemIcons[itemSlot]);
             hotbarItemIcons[itemSlot] = null;
+
+            deleteInspectorItem = true;
+            deletedItemObject = itemSlot;
         }
     }
 
-    public ItemData GetSelectedIten()
+    public ItemData GetSelectedItem()
     {
-        return hotbarItems[selectedItemSlot];
-    }
-
-    public bool SelectedItemChanged()
-    {
-        if (selectedItemSlot == previousItemSlot)
+        if (selectedItemSlot != -1)
         {
-            return false;
+            return hotbarItems[selectedItemSlot];
         }
-        else
-        {
-            previousItemSlot = selectedItemSlot;
-            return true;
-        }
+        return null;
     }
 
     private void HighlightSlot()
     {
+        if (selectedItemSlot == -1) { return; }
+
         currentSlotLocation = new Vector2(selectedItemSlot * 64, 0);
 
         hotbarHighlight.Show(true);
@@ -106,6 +107,8 @@ public class HotbarManagement : MonoBehaviour
         if (hotbarItems[slotToAdd] != null)
         {
             Destroy(hotbarItemIcons[slotToAdd]);
+            deleteInspectorItem = true;
+            deletedItemObject = slotToAdd;
         }
 
         AddItemToSlot(itemData, slotToAdd);
@@ -146,6 +149,7 @@ public class HotbarManagement : MonoBehaviour
             {
                 selectedItemSlot++;
             }
+            selectedItemChanged = true;
         }
 
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
@@ -160,6 +164,7 @@ public class HotbarManagement : MonoBehaviour
             {
                 selectedItemSlot--;
             }
+            selectedItemChanged = true;
         }
     
         if (Input.anyKey)
@@ -168,54 +173,63 @@ public class HotbarManagement : MonoBehaviour
             {
                 previousItemSlot = selectedItemSlot;
                 selectedItemSlot = 0;
+                selectedItemChanged = true;
             }
 
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 previousItemSlot = selectedItemSlot;
                 selectedItemSlot = 1;
+                selectedItemChanged = true;
             }
 
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 previousItemSlot = selectedItemSlot;
                 selectedItemSlot = 2;
+                selectedItemChanged = true;
             }
 
             else if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 previousItemSlot = selectedItemSlot;
                 selectedItemSlot = 3;
+                selectedItemChanged = true;
             }
 
             else if (Input.GetKeyDown(KeyCode.Alpha5))
             {
                 previousItemSlot = selectedItemSlot;
                 selectedItemSlot = 4;
+                selectedItemChanged = true;
             }
 
             else if (Input.GetKeyDown(KeyCode.Alpha6))
             {
                 previousItemSlot = selectedItemSlot;
                 selectedItemSlot = 5;
+                selectedItemChanged = true;
             }
 
             else if (Input.GetKeyDown(KeyCode.Alpha7))
             {
                 previousItemSlot = selectedItemSlot;
                 selectedItemSlot = 6;
+                selectedItemChanged = true;
             }
 
             else if (Input.GetKeyDown(KeyCode.Alpha8))
             {
                 previousItemSlot = selectedItemSlot;
                 selectedItemSlot = 7;
+                selectedItemChanged = true;
             }
 
             else if (Input.GetKeyDown(KeyCode.Alpha9))
             {
                 previousItemSlot = selectedItemSlot;
                 selectedItemSlot = 8;
+                selectedItemChanged = true;
             }
         }
     }

@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 
 public class SwitchItemHeld : MonoBehaviour
 {
     private ItemData itemData;
     private GameObject itemToDisplay;
+    [SerializeField] List<GameObject> itemsInInspector;
 
     [SerializeField] PauseManager pauseManager;
     [SerializeField] HotbarManagement hotbarManagement;
@@ -14,20 +17,34 @@ public class SwitchItemHeld : MonoBehaviour
     [SerializeField] Transform weaponHolderTransform;
     [SerializeField] GameObject impactEffect;
     [SerializeField] Animator animator;
+    [SerializeField] TextMeshProUGUI ammoText;
 
     private void Start()
     {
-        itemData = hotbarManagement.GetSelectedIten();
+        itemData = hotbarManagement.GetSelectedItem();
         DisplaySlotItem();
     }
 
     private void Update()
     {
-        if (hotbarManagement.SelectedItemChanged())
+        if (hotbarManagement.selectedItemChanged)
         {
-            Destroy(itemToDisplay);
-            itemData = hotbarManagement.GetSelectedIten();
+            if (hotbarManagement.previousItemSlot != -1 && itemsInInspector[hotbarManagement.previousItemSlot] != null)
+            {
+                itemsInInspector[hotbarManagement.previousItemSlot].SetActive(false);
+            }       
+            
+            itemData = hotbarManagement.GetSelectedItem();
             DisplaySlotItem();
+
+            hotbarManagement.selectedItemChanged = false;
+        }
+
+        if (hotbarManagement.deleteInspectorItem && hotbarManagement.deletedItemObject != -1)
+        {
+            Destroy(itemsInInspector[hotbarManagement.deletedItemObject]);
+            hotbarManagement.deleteInspectorItem = false;
+            hotbarManagement.deletedItemObject = -1;
         }
     }
 
@@ -35,32 +52,44 @@ public class SwitchItemHeld : MonoBehaviour
     {
         if (itemData == null) { return; }
 
-        itemToDisplay = Instantiate(itemData.itemPrefab);
-
-        Transform itemTransform = itemToDisplay.GetComponent<Transform>();
-        itemTransform.SetParent(weaponHolderTransform);
-
-        itemTransform.localPosition = itemData.itemPos;
-
-        Quaternion itemRotation = Quaternion.Euler(itemData.itemRotation);
-        itemTransform.localRotation = itemRotation;
-
-        // Add references to prefab
-        if (itemData.itemType == "MiningGun")
+        if (itemsInInspector[hotbarManagement.selectedItemSlot] != null)
         {
-            LazerGun lazerGunScript = itemToDisplay.GetComponent<LazerGun>();
-            lazerGunScript.fpsCam = camera;
-            lazerGunScript.pauseManager = pauseManager;
+            itemsInInspector[hotbarManagement.selectedItemSlot].SetActive(true);
         }
 
-        else if (itemData.itemType == "Gun")
+        else
         {
-            Gun gunScrpit = itemToDisplay.GetComponent<Gun>(); 
-            gunScrpit.fpsCam = camera;
-            gunScrpit.impactEffect = impactEffect;
-            gunScrpit.animator = animator;
-            gunScrpit.SetAnimator();
-            gunScrpit.pauseManager = pauseManager;
+            itemToDisplay = Instantiate(itemData.itemPrefab);
+
+            Transform itemTransform = itemToDisplay.GetComponent<Transform>();
+            itemTransform.SetParent(weaponHolderTransform);
+
+            itemTransform.localPosition = itemData.itemPos;
+
+            Quaternion itemRotation = Quaternion.Euler(itemData.itemRotation);
+            itemTransform.localRotation = itemRotation;
+
+            itemsInInspector[hotbarManagement.selectedItemSlot] = itemToDisplay;
+
+            // Add references to prefab
+            if (itemData.itemType == "MiningGun")
+            {
+                LazerGun lazerGunScript = itemToDisplay.GetComponent<LazerGun>();
+                lazerGunScript.fpsCam = camera;
+                lazerGunScript.pauseManager = pauseManager;
+            }
+
+            else if (itemData.itemType == "Gun")
+            {
+                Gun gunScrpit = itemToDisplay.GetComponent<Gun>();
+                gunScrpit.fpsCam = camera;
+                gunScrpit.impactEffect = impactEffect;
+                gunScrpit.animator = animator;
+                gunScrpit.SetAnimator();
+                gunScrpit.pauseManager = pauseManager;
+                gunScrpit.ammoText = ammoText;
+            }
         }
+
     }
 }
