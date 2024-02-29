@@ -10,7 +10,6 @@ public class SwitchItemHeld : MonoBehaviour
     private ItemData itemData;
     private GameObject itemToDisplay;
     [SerializeField] List<GameObject> itemsInInspector;
-
     [SerializeField] PauseManager pauseManager;
     [SerializeField] HotbarManagement hotbarManagement;
     [SerializeField] new Camera camera;
@@ -32,6 +31,8 @@ public class SwitchItemHeld : MonoBehaviour
             if (hotbarManagement.previousItemSlot != -1 && itemsInInspector[hotbarManagement.previousItemSlot] != null)
             {
                 itemsInInspector[hotbarManagement.previousItemSlot].SetActive(false);
+                ammoText.gameObject.SetActive(false);
+
             }       
             
             itemData = hotbarManagement.GetSelectedItem();
@@ -55,6 +56,13 @@ public class SwitchItemHeld : MonoBehaviour
         if (itemsInInspector[hotbarManagement.selectedItemSlot] != null)
         {
             itemsInInspector[hotbarManagement.selectedItemSlot].SetActive(true);
+
+            if (itemData.itemType == "Gun")
+            {
+                ammoText.gameObject.SetActive(true);
+                Gun gunScript = itemsInInspector[hotbarManagement.selectedItemSlot].GetComponent<Gun>();
+                gunScript.UpdateAmmoText();
+            }
         }
 
         else
@@ -88,6 +96,8 @@ public class SwitchItemHeld : MonoBehaviour
                 gunScrpit.SetAnimator();
                 gunScrpit.pauseManager = pauseManager;
                 gunScrpit.ammoText = ammoText;
+                gunScrpit.UpdateAmmoText();
+                ammoText.gameObject.SetActive(true);
             }
         }
 

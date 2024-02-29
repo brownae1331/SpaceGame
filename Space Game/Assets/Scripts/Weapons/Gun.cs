@@ -27,13 +27,17 @@ public class Gun : MonoBehaviour
 
     public TextMeshProUGUI ammoText;
 
-    void Start()
+    private void Awake()
     {
         currentAmmo = maxAmmo;
+    }
+
+    void Start()
+    {
         ammoText.gameObject.SetActive(true);
     }
 
-    void UpdateAmmoText()
+    public void UpdateAmmoText()
     {
         if (ammoText != null)
         {

@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 1420210536}
   - component: {fileID: 1420210538}
   - component: {fileID: 1420210537}
+  - component: {fileID: 1420210539}
   m_Layer: 5
   m_Name: Ammo
   m_TagString: Untagged
@@ -325,6 +326,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420210535}
   m_CullTransparentMesh: 1
+--- !u!114 &1420210539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420210535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee485eb648581864694e081bb1a81ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoText: {fileID: 1420210535}
 --- !u!1 &1475430023
 GameObject:
   m_ObjectHideFlags: 0
@@ -12946,6 +12960,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  textManager: {fileID: 1420210539}
   pauseManager: {fileID: 1475430026}
   hotbarManagement: {fileID: 4147258393516342610}
   camera: {fileID: 4671522296316978002}
